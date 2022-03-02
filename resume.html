@@ -1,0 +1,568 @@
+<html lang="en"><head><style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+    *
+    {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', SansSerif;
+    }
+
+    body {
+        background-color: lightblue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+    .container{
+        position: relative;
+        width: 100%;
+        max-width: 1000px;
+        min-height: 1000px;
+        background-color: #fff;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        box-shadow: 0 35px 55px rgba(0,0,0,0.1);
+        margin: 50px 0;
+    }
+    .container .left_Side {
+        position: relative;
+        background-color: #003147;
+        padding: 40px;
+    }
+    .profileText{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    .profileText .imgBx {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    .profileText .imgBx img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .photo {
+        width: 100%;
+        height: auto;
+    }
+    .profileText h2 {
+        color: #fff;
+        font-size: 1.5em;
+        margin-top: 20px;
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: 600;
+        line-height: 1.4em;
+        display: none;
+    }
+    .profileText h2 span{
+        font-size: 0.8em;
+        font-weight: 300;
+    }
+    .contactInfo {
+        padding-top: 40px;
+    }
+    .title{
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+    }
+    .contactInfo ul {
+        position: relative;
+    }
+    .contactInfo ul li {
+        list-style: none;
+        position: relative;
+        margin: 10px 0;
+        cursor: pointer;
+    }
+    .contactInfo ul li .icon {
+        display: inline-block;
+        width: 30px;
+        font-size: 18px;
+        color: #03a9f4;
+        margin: auto 0;
+    }
+    .contactInfo ul li span{
+        color: #fff;
+        font-weight: 300;
+    }
+    .contactInfo.about-me table td{
+        color: #fff;
+        font-weight: 300;
+    }
+    .contactInfo.about-me table .table-seprator{
+        width: 21px;
+        text-align: center;
+    }
+    .contactInfo.education li {
+        margin-bottom: 15px;
+    }
+    .contactInfo.education h5 {
+        color: #03a9f4;
+        font-weight: 500;
+    }
+    .contactInfo.education h4:nth-child(2) {
+        color: #fff;
+        font-weight: 500;
+    }
+    .contactInfo.education h4 {
+        color: #fff;
+        font-weight: 300;
+    }
+    .contactInfo.language .percent {
+        position: relative;
+        width: 100%;
+        height: 6px;
+        background-color: #081921;
+        display: block;
+        margin-top: 5px;
+    }
+    .contactInfo.language .percent div {
+        position: relative;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background-color: #03a9f4;
+    }
+    .contactInfo.contact-me li{
+        display: flex;
+    }
+    .container .right_Side {
+        position: relative;
+        background-color: #fff;
+        padding: 40px;
+    }
+    .about {
+        margin-bottom: 50px;
+    }
+    .about:last-child {
+        margin-bottom: 0;
+    }
+    .title2 {
+        color: #003147;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+    }
+    .title3 {
+        font-size: 61px;
+        font-weight: 300;
+        text-transform: uppercase;
+        letter-spacing: .2rem;
+        line-height: 1.8em;
+    }
+    .designation {
+        overflow: hidden;
+        text-align: left;
+    }
+    .designation:after {
+        background-color: #003147;
+        content: "";
+        display: inline-block;
+        height: 12px;
+        position: relative;
+        vertical-align: middle;
+        width: 100%;
+        left: 1em;
+        margin-right: -100%;
+    }
+    p {
+        color: #081921;
+    }
+    .about .box {
+        display: flex;
+        flex-direction: row;
+        margin: 20px 0;
+    }
+    .about .box h6{
+        color: #848c90;
+        font-weight: 500;
+    }
+    .about .box .year_company {
+        min-width: 150px;
+    }
+    .about .box .year_company h5 {
+        text-transform: uppercase;
+        color: #848c90;
+        font-weight: 600;
+    }
+    .about .box .text h4 {
+        text-transform: uppercase;
+        color: #2a7da2;
+        font-size: 16px;
+    }
+    .text.email {
+        font-size: 15px;
+    }
+    .skills .box {
+        position: relative;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 250px 1fr;
+        justify-content: center;
+        align-items: center;
+    }
+    .skills .box h4 {
+        text-transform: uppercase;
+        color: #848c90;
+        font-weight: 500;
+    }
+    .skills .box .percent {
+        position: relative;
+        width: 100%;
+        height: 10px;
+        background-color: #f0f0f0;
+    }
+    .skills .box .percent div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background-color: #03a9f4;
+    }
+    .interest ul {
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+    }
+    .interest ul li {
+        list-style: none;
+        color: black;
+        font-weight: 500;
+        margin: 10px 0;
+    }
+    .interest ul li .fa {
+        color: #03a9f4;
+        font-size: 18px;
+        width: 20px;
+    }
+    sup {
+        font-size: 10px;
+    }
+    @media (max-width: 880px) {
+        .container {
+            margin: 10px;
+            grid-template-columns: repeat(1,1fr);
+        }
+        .interest ul {
+            grid-template-columns: repeat(2,1fr);
+        }
+        .profileText h2{
+            display: block;
+        }
+        .about.my-name{
+            display: none;
+        }
+        .about .box{
+            flex-direction: column-reverse;
+        }
+        .about .box .year_company{
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+        .about .box .text p{
+            font-size: 12px;
+        }
+    }
+    @media (max-width: 600px) {
+        
+        
+        .interest ul {
+            grid-template-columns: repeat(1,1fr);
+        }
+        .skills .box {
+            grid-template-columns: repeat(1,1fr);
+        }
+
+    }
+    .englishw50 {
+        width: 60%;
+    }
+    .russianw90 {
+        width: 90%;
+    }
+    .frenchw30{
+        width: 30%;
+    }
+    .htmlws30 {
+        width: 50%;
+    }
+    .cssws45 {
+       width: 45%;
+    }
+    .jsws70 {
+        width: 70%;
+    }
+    .phws40{
+       width: 40%;
+    }
+    .ilws60 {
+       width: 60%;
+    }
+    .adw70 {
+        width: 70%;
+    }
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Responsive CV </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+</head>
+
+<body>
+<div class="container">
+    <div class="left_Side">
+        <div class="profileText">
+            <div class="imgBx">
+                <img class="photo" src="krishna.jpeg">
+            </div>
+            <br>
+            <h2>Krishna Kant<br><span>Wordpress Developer</span> </h2>
+        </div>
+        <div class="contactInfo about-me">
+            <h3 class="title">About Me</h3>
+            <table>
+                <tr>
+                    <td>D.O.B</td>
+                    <td class="table-seprator">:</td>
+                    <td>3<sup>rd</sup> August 1995</td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td class="table-seprator">:</td>
+                    <td>Male</td>
+                </tr>
+            </table>
+        </div>
+        <div class="contactInfo contact-me">
+            <h3 class="title">Contact Info</h3>
+            <ul>
+                <li>
+                    <span class="icon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                    <span class="text">+91-9910397799</span>
+                </li>
+                <li>
+                    <span class="icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+                    <span class="text email">tech.krishnakant@gmail.com
+</span>
+                </li>
+                <li>
+                    <span class="icon"><i class="fa fa-globe" aria-hidden="true"></i></span>
+                    <span class="text">WWW.KRISHNAKANT.IN</span>
+                </li>
+                <li>
+                    <span class="icon"><i class="fa fa-linkedin" aria-hidden="true"></i></span>
+                    <span class="text">/KRISHNAKANTPAL</span>
+                </li>
+                <li>
+                    <span class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                    <span class="text">NOIDA, INDIA</span>
+                </li>
+            </ul>
+        </div>
+        <div class="contactInfo education">
+            <h3 class="title">Education</h3>
+            <ul>
+                <li>
+                    <h5>2016 - 2018</h5>
+                    <h4>Master Degree in Computer Science</h4>
+                    <h4>L. R. College, Sahibabad</h4>
+                </li>
+                <li>
+                    <h5>2012 - 2015</h5>
+                    <h4>Bachelor Degree Computer Science</h4>
+                    <h4>L. R. College, Sahibabad</h4>
+                </li>
+                <li>
+                    <h5>2009 - 2012</h5>
+                    <h4>Sr Secondary</h4>
+                    <h4>Police Modern School</h4>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- <div class="contactInfo language">
+            <h3 class="title">Languages</h3>
+            <ul>
+                <li>
+                    <span class="text">English</span>
+                    <span class="percent">
+                        <div data-language="english" style="width: 70%;"></div>
+                    </span>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <span class="text">Russian</span>
+                    <span class="percent">
+                        <div data-language="russian" style="width: 90%;"></div>
+                    </span>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <span class="text">French</span>
+                    <span class="percent">
+                        <div data-language="french" style="width: 40%;"></div>
+                    </span>
+                </li>
+            </ul>
+        </div> -->
+    </div>
+    <div class="right_Side">
+        <div class="about my-name">
+            <h2 class="title3">Krishna Kant</h2>
+            <h2 class="title2 designation">Wordpress Developer</h2>
+        </div>
+        <div class="about">
+            <h2 class="title2">Profile</h2>
+            <p>An expert Wordpress developer with over 3+ years of experience in the web design industry. My expertise are wordpress theme customizations, Plugin development, and Woo-Commerce customization with secure and responsive web designs. I am here to help you build your online presence in this digital era to grow digitally.</p>
+        </div>
+        <div class="about">
+            <h2 class="title2">Experience</h2>
+            <div class="box">
+                <div class="year_company">
+                    <h5>DEC 2020 - Present</h5>
+                    <h5>Webnotics Pvt. LTD.</h5>
+                    <h6>NOIDA, IN</h6>
+                </div>
+                <div class="text">
+                    <h4>Wordpress Developer</h4>
+                    <p>Working on various Pro themes and Plugins, Developing Custom Functionality, Elementor, Theme Customisations, WooCommerce, HTML, CSS, PHP, jQuerry, JS</p>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="year_company">
+                    <h5>SEP 2018 - DEC 2020</h5>
+                    <h5>ANCODD WEB SOLUTIONS</h5>
+                    <h6>GHAZIABAD, IN</h6>
+                </div>
+                <div class="text">
+                    <h4>WEB DEVELOPER</h4>
+                    <p>Responsible for creating, improving, and developing websites using HTML, CSS, JavaScript and PHP.</p>
+                </div>
+            </div>
+
+            
+        </div>
+        <div class="about skills">
+            <h2 class="title2">Skills</h2>
+            <div class="box">
+                <h4>WORDPRESS</h4>
+                <div class="percent">
+                    <div data-knowledge="WORDPRESS" style="width: 99%;"></div>
+                </div>
+            </div>
+            <div class="box">
+                <h4>JQUERY</h4>
+                <div class="percent">
+                    <div data-knowledge="JQUERY" style="width: 90%;"></div>
+                </div>
+            </div>
+            <div class="box">
+                <h4>CORE PHP</h4>
+                <div class="percent">
+                    <div data-knowledge="CORE PHP" style="width: 95%;"></div>
+                </div>
+            </div>
+            <div class="box">
+                <h4>JAVASCRIPT (ES6)</h4>
+                <div class="percent">
+                    <div data-knowledge="JAVASCRIPT (ES6)" style="width: 70%;"></div>
+                </div>
+            </div>
+            <div class="box">
+                <h4>MYSQL</h4>
+                <div class="percent">
+                    <div data-knowledge="MYSQL" style="width: 60%;"></div>
+                </div>
+            </div>
+            <div class="box">
+                <h4>HTML5 & CSS3</h4>
+                <div class="percent">
+                    <div data-knowledge="HTML5 & CSS3" style="width: 74%;"></div>
+                </div>
+            </div>
+            <div class="box">
+                <h4>BOOTSTRAP</h4>
+                <div class="percent">
+                    <div data-knowledge="BOOTSTRAP" style="width: 80%;"></div>
+                </div>
+            </div>
+            <div class="box">
+                <h4>PHOTOSHOP</h4>
+                <div class="percent">
+                    <div data-knowledge="PHOTOSHOP" style="width: 60%;"></div>
+                </div>
+            </div>
+            <div class="box">
+                <h4>REST API</h4>
+                <div class="percent">
+                    <div data-knowledge="REST API" style="width: 83%;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="about skills">
+            <h2 class="title2">TECHNICAL PROFICIENCIES</h2>
+            <div class="box">
+                <h4>WP Theme Customization</h4>
+                <div class="percent">
+                    <div data-knowledge="WP Theme Customization" style="width: 97%;"></div>
+                </div>
+            </div>
+            <div class="box">
+                <h4>WP Plug-in Development</h4>
+                <div class="percent">
+                    <div data-knowledge="WP Plug-in Development" style="width: 85%;"></div>
+                </div>
+            </div>
+            <div class="box">
+                <h4>WOO-COMMERCE</h4>
+                <div class="percent">
+                    <div data-knowledge="WOO-COMMERCE" style="width: 93%;"></div>
+                </div>
+            </div>
+            <div class="box">
+                <h4>Elementor Builder</h4>
+                <div class="percent">
+                    <div data-knowledge="Elementor" style="width: 98%;"></div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="about interest">
+            <h2 class="title2">Interests</h2>
+            <ul>
+                <li><i class="fa fa-book" aria-hidden="true"></i> Reading</li>
+                <li><i class="fa fa-gamepad" aria-hidden="true"></i> Gaming</li>
+                <li><i class="fa fa-cutlery" aria-hidden="true"></i> Cooking</li>
+                <li><i class="fa fa-microphone" aria-hidden="true"></i> Singing</li>
+            </ul>
+        </div> -->
+
+
+    </div>
+</div>
+
+
+
+
+</body>
+</html>
